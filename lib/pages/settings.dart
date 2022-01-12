@@ -1,3 +1,4 @@
+import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/widgets/default_app_bar.dart';
 import 'package:anigiri/widgets/dropdown_option.dart';
 import 'package:flutter/material.dart';
@@ -50,8 +51,8 @@ class Settings extends StatelessWidget {
                         ),
                         DropDownOption(
                           title: 'Choose website',
-                          items: const ['Gelbooru'],
-                          selectedItem: 'Gelbooru',
+                          items: globals.websites,
+                          selectedItem: globals.websites[0],
                           onChange: (p0) {},
                         )
                       ],

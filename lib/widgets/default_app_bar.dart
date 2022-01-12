@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:anigiri/services/globals.dart' as globals;
 
-class DefaultAppBar extends StatelessWidget {
+class DefaultAppBar extends StatefulWidget {
   const DefaultAppBar({Key? key}) : super(key: key);
 
+  @override
+  _DefaultAppBarState createState() => _DefaultAppBarState();
+}
+
+class _DefaultAppBarState extends State<DefaultAppBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,9 +16,9 @@ class DefaultAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            "Gelbooru",
-            style: TextStyle(
+          Text(
+            globals.currentWebsite,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 25,
               fontWeight: FontWeight.w300,

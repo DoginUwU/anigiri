@@ -1,3 +1,4 @@
+import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/widgets/image_card.dart';
 import 'package:flutter/material.dart';
 
@@ -34,17 +35,12 @@ class _ImagesState extends State<Images> {
           crossAxisSpacing: 10,
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          children: const [
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-            ImageCard(),
-          ],
+          children: globals.search?.items
+                  .map((item) => ImageCard(
+                        item: item,
+                      ))
+                  .toList() ??
+              [],
         )
       ],
     );
