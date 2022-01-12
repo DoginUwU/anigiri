@@ -6,7 +6,7 @@ class DefaultAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(25),
+      padding: const EdgeInsets.all(18),
       child: Align(
         alignment: Alignment.centerLeft,
         child: Row(
@@ -22,7 +22,12 @@ class DefaultAppBar extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                print("Settings");
+                var currentRoute = ModalRoute.of(context)?.settings.name;
+                if (currentRoute != "/settings") {
+                  Navigator.pushNamed(context, '/settings');
+                } else {
+                  Navigator.pushNamed(context, '/');
+                }
               },
               child: const Icon(
                 Icons.settings,

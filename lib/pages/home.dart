@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: const Images(
-                  title: 'Tudo',
+                  title: 'All',
                 ),
               ),
             ),

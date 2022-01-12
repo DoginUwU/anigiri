@@ -1,3 +1,4 @@
+import 'package:anigiri/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 
@@ -10,8 +11,13 @@ class Anigiri extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SafeArea(child: Home()),
+    return MaterialApp(
+      title: 'Anigiri',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SafeArea(child: Home()),
+        '/settings': (context) => const SafeArea(child: Settings()),
+      },
     );
   }
 }
