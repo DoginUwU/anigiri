@@ -13,7 +13,7 @@ class DefaultAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "Gelbooru",
+              "Gelbooru - All",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 25,
@@ -22,7 +22,7 @@ class DefaultAppBar extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                var currentRoute = ModalRoute.of(context)?.settings.name;
+                String? currentRoute = ModalRoute.of(context)?.settings.name;
                 if (currentRoute != "/settings") {
                   Navigator.pushNamed(context, '/settings');
                 } else {

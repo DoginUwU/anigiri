@@ -1,6 +1,5 @@
 import 'package:anigiri/widgets/default_app_bar.dart';
 import 'package:anigiri/widgets/dropdown_option.dart';
-import 'package:anigiri/widgets/switch_option.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatelessWidget {

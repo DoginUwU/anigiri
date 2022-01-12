@@ -1,3 +1,4 @@
+import 'package:anigiri/pages/search.dart';
 import 'package:anigiri/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
@@ -17,6 +18,7 @@ class Anigiri extends StatelessWidget {
       routes: {
         '/': (context) => const SafeArea(child: Home()),
         '/settings': (context) => const SafeArea(child: Settings()),
+        '/search': (context) => const SafeArea(child: Search()),
       },
     );
   }

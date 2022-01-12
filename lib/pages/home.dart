@@ -1,3 +1,4 @@
+import 'package:anigiri/widgets/default_navigation_bar.dart';
 import 'package:anigiri/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:anigiri/widgets/default_app_bar.dart';
@@ -8,6 +9,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const DefaultNavigationBar(),
       body: Container(
         color: Colors.blue[500],
         child: Column(

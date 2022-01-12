@@ -15,19 +15,6 @@ class _ImagesState extends State<Images> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
         Expanded(
           child: GridView.count(
             crossAxisCount: 2,
