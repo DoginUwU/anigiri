@@ -15,24 +15,36 @@ class _ImagesState extends State<Images> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: GridView.count(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            physics: const BouncingScrollPhysics(),
-            children: const [
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-              ImageCard(),
-            ],
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
           ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        GridView.count(
+          crossAxisCount: 2,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: const [
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+            ImageCard(),
+          ],
         )
       ],
     );

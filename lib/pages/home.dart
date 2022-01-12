@@ -26,8 +26,18 @@ class Home extends StatelessWidget {
                   ),
                   color: Colors.white,
                 ),
-                child: const Images(
-                  title: 'All',
+                child: Row(
+                  children: const [
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        physics: BouncingScrollPhysics(),
+                        child: Images(
+                          title: 'All',
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
