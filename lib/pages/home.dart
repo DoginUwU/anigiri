@@ -1,24 +1,30 @@
 import 'package:anigiri/services/globals.dart' as globals;
-import 'package:anigiri/services/backend.dart';
 import 'package:anigiri/services/utils.dart';
 import 'package:anigiri/widgets/default_navigation_bar.dart';
 import 'package:anigiri/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:anigiri/widgets/default_app_bar.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    EasyLoading.show(status: 'loading...');
-    searchByTags('cloud', 1).then((value) {
-      globals.search = value;
-      EasyLoading.dismiss();
-      rebuildAllChildren(context);
-    });
+  _HomeState createState() => _HomeState();
+}
 
+class _HomeState extends State<Home> {
+  int page = 1;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    searchByTags(context, 'all', page, true)
+        .then((a) => {setState(() => isLoading = false)});
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: const DefaultNavigationBar(),
       body: Container(
@@ -38,14 +44,23 @@ class Home extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: Row(
-                  children: const [
+                  children: [
                     Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        physics: BouncingScrollPhysics(),
-                        child: Images(
-                          title: 'All',
-                        ),
+                      child: Images(
+                        title: 'All',
+                        items: globals.search?.items ?? [],
+                        onRequestFetch: () async {
+                          if (isLoading) return;
+
+                          setState(() {
+                            isLoading = true;
+                          });
+                          await searchByTags(context, 'all', page + 1, false);
+                          setState(() {
+                            page += 1;
+                            isLoading = false;
+                          });
+                        },
                       ),
                     ),
                   ],

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SearchAppBar extends StatefulWidget {
-  const SearchAppBar({Key? key}) : super(key: key);
+  final void Function(String) onSubmitted;
+
+  const SearchAppBar({Key? key, required this.onSubmitted}) : super(key: key);
 
   @override
   _SearchAppBarState createState() => _SearchAppBarState();
@@ -12,15 +14,16 @@ class _SearchAppBarState extends State<SearchAppBar> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(18),
-      child: const Align(
+      child: Align(
         alignment: Alignment.center,
         child: TextField(
-          obscureText: true,
-          decoration: InputDecoration(
+          obscureText: false,
+          decoration: const InputDecoration(
             fillColor: Colors.white,
             filled: true,
             labelText: 'Search...',
           ),
+          onSubmitted: widget.onSubmitted,
         ),
       ),
     );

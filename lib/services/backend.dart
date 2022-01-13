@@ -5,7 +5,7 @@ import 'package:anigiri/models/backend.dart';
 
 const baseUrl = "https://anigiri-back.herokuapp.com/";
 
-Future<MainBackend> getIndex() async {
+Future<MainBackend> getIndexApi() async {
   final url = Uri.parse(baseUrl);
   final response = await http.get(url);
 
@@ -14,11 +14,11 @@ Future<MainBackend> getIndex() async {
     return MainBackend.fromJson(json);
   } catch (e) {
     await Future.delayed(const Duration(seconds: 5));
-    return getIndex();
+    return getIndexApi();
   }
 }
 
-Future<SearchBackend> searchByTags(String tags, int page) async {
+Future<SearchBackend> searchByTagsApi(String tags, int page) async {
   final url = Uri.parse(
       baseUrl + "search?tags=$tags&site=${globals.currentWebsite}&page=$page");
   final response = await http.get(url);
@@ -28,6 +28,6 @@ Future<SearchBackend> searchByTags(String tags, int page) async {
     return SearchBackend.fromJson(json);
   } catch (e) {
     await Future.delayed(const Duration(seconds: 5));
-    return searchByTags(tags, page);
+    return searchByTagsApi(tags, page);
   }
 }

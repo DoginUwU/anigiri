@@ -16,7 +16,7 @@ class Anigiri extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getIndex().then((a) {
+    getIndexApi().then((a) {
       final sites = a.availableSites.cast<String>();
       globals.websites = sites;
       globals.currentWebsite = sites[0];
