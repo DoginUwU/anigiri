@@ -18,7 +18,7 @@ Home             |  Detail image
 
 ## Installation
 
-- To install this app, go to the **releases tab**, and download the latest version possible.
+- To install this app, go to the [**releases tab**](https://github.com/DoginUwU/anigiri/releases), and download the latest version possible.
 - Allow installation from unknown sources by browser.
 - Install and have fun.
 ## Contributing
