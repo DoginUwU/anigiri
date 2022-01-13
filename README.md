@@ -1,7 +1,7 @@
 
 # Anigiri
 
-A simple booru website viewer for mobile. In it you can quickly browse between booru sites, and download images according to your wishes.
+A simple booru website viewer for mobile. You can quickly browse between booru sites, and download images according to your wishes.
 
 Home             |  Detail image
 :-------------------------:|:-------------------------:
