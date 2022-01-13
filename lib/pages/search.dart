@@ -16,6 +16,19 @@ class _SearchState extends State<Search> {
   int page = 1;
   bool isLoading = true;
 
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration.zero, () {
+      final searchString =
+          ModalRoute.of(context)!.settings.arguments as String?;
+
+      if (searchString != null) {
+        handleSearch(searchString);
+      }
+    });
+  }
+
   Future<void> handleSearch(String query) async {
     setState(() {
       isLoading = true;

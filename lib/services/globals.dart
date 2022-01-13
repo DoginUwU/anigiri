@@ -5,3 +5,4 @@ List<String> websites = [];
 SearchBackend? search;
 String currentWebsite = "";
 String downloadPath = "";
+bool initialized = false;

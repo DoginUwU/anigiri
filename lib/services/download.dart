@@ -11,6 +11,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 ReceivePort _port = ReceivePort();
 
 Future<void> initializeDownloads() async {
+  if (globals.initialized) return;
+
   await FlutterDownloader.initialize(debug: true);
   FlutterDownloader.registerCallback(callback);
   IsolateNameServer.registerPortWithName(
@@ -26,6 +28,8 @@ Future<void> initializeDownloads() async {
 
   globals.downloadPath = downloadsPath;
   prefs.setString('downloadsPath', downloadsPath);
+
+  globals.initialized = true;
 }
 
 void callback(String id, DownloadTaskStatus status, int progress) {
