@@ -12,15 +12,17 @@ ReceivePort _port = ReceivePort();
 
 Future<void> initializeDownloads() async {
   await FlutterDownloader.initialize(debug: true);
+  FlutterDownloader.registerCallback(callback);
   IsolateNameServer.registerPortWithName(
       _port.sendPort, 'downloader_send_port');
-  FlutterDownloader.registerCallback(callback);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   String? downloadsPath = prefs.getString('downloadsPath');
 
-  downloadsPath ??= await getPathToDownload();
+  if (downloadsPath == null || downloadsPath.isEmpty) {
+    downloadsPath = await getPathToDownload();
+  }
 
   globals.downloadPath = downloadsPath;
   prefs.setString('downloadsPath', downloadsPath);

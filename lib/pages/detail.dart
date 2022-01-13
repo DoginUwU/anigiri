@@ -1,6 +1,7 @@
 import 'package:anigiri/models/backend.dart';
 import 'package:anigiri/services/backend.dart';
 import 'package:anigiri/services/download.dart';
+import 'package:anigiri/widgets/detail_tag.dart';
 import 'package:anigiri/widgets/go_back_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -73,11 +74,13 @@ class Build extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: SingleChildScrollView(
                         physics: const BouncingScrollPhysics(),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
@@ -102,6 +105,21 @@ class Build extends StatelessWidget {
                               child: const Text("Download"),
                             ),
                             const SizedBox(height: 20),
+                            Text(
+                              "Tags",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            const SizedBox(height: 10),
+                            Wrap(
+                              spacing: 3,
+                              runSpacing: 3,
+                              alignment: WrapAlignment.start,
+                              children: item.tags
+                                  .map(
+                                    (tag) => DetailTag(title: tag),
+                                  )
+                                  .toList(),
+                            )
                           ],
                         ),
                       ),

@@ -54,6 +54,7 @@ class _HomeState extends State<Home> {
                   color: Colors.white,
                 ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Expanded(
                       child: Images(
