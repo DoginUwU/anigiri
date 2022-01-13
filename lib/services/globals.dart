@@ -4,3 +4,4 @@ String searchString = "";
 List<String> websites = [];
 SearchBackend? search;
 String currentWebsite = "";
+String downloadPath = "";

@@ -38,6 +38,32 @@ class SearchItemBackend {
   }
 }
 
+class PostItemBackend {
+  final int id;
+  final String image;
+  final String artist;
+  final String copyright;
+  final List<dynamic> tags;
+
+  PostItemBackend({
+    required this.id,
+    required this.image,
+    required this.artist,
+    required this.copyright,
+    required this.tags,
+  });
+
+  factory PostItemBackend.fromJson(final json) {
+    return PostItemBackend(
+      id: json['id'],
+      image: json['image'],
+      artist: json['artist'],
+      copyright: json['copyright'],
+      tags: json['tags'],
+    );
+  }
+}
+
 class SearchBackend {
   final int currentPage;
   final int nextPage;

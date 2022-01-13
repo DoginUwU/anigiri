@@ -13,11 +13,16 @@ class ImageCard extends StatefulWidget {
 class _ImageCardState extends State<ImageCard> {
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Image.network(
-        widget.item.image,
-        fit: BoxFit.cover,
+    return TextButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/detail', arguments: widget.item);
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(10),
+        child: Image.network(
+          widget.item.image,
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

@@ -31,3 +31,16 @@ Future<SearchBackend> searchByTagsApi(String tags, int page) async {
     return searchByTagsApi(tags, page);
   }
 }
+
+Future<PostItemBackend> getPostApi(String id) async {
+  final url = Uri.parse(baseUrl + "post?id=$id&site=${globals.currentWebsite}");
+  final response = await http.get(url);
+
+  try {
+    final json = jsonDecode(response.body);
+    return PostItemBackend.fromJson(json);
+  } catch (e) {
+    await Future.delayed(const Duration(seconds: 5));
+    return getPostApi(id);
+  }
+}

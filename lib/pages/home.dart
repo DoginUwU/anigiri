@@ -1,3 +1,4 @@
+import 'package:anigiri/services/download.dart';
 import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/services/utils.dart';
 import 'package:anigiri/widgets/default_navigation_bar.dart';
@@ -19,6 +20,7 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    initializeDownloads();
     searchByTags(context, 'all', page, true)
         .then((a) => {setState(() => isLoading = false)});
   }

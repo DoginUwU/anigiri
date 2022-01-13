@@ -1,3 +1,4 @@
+import 'package:anigiri/pages/detail.dart';
 import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/services/utils.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -30,6 +31,7 @@ class Anigiri extends StatelessWidget {
         '/': (context) => const SafeArea(child: Home()),
         '/settings': (context) => const SafeArea(child: Settings()),
         '/search': (context) => const SafeArea(child: Search()),
+        '/detail': (context) => const SafeArea(child: Detail()),
       },
       builder: EasyLoading.init(),
     );
