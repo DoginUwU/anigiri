@@ -3,6 +3,7 @@ import 'package:anigiri/services/backend.dart';
 import 'package:anigiri/services/download.dart';
 import 'package:anigiri/widgets/detail_tag.dart';
 import 'package:anigiri/widgets/go_back_app_bar.dart';
+import 'package:anigiri/widgets/image_card.dart';
 import 'package:flutter/material.dart';
 
 class Detail extends StatefulWidget {
@@ -54,6 +55,8 @@ class Build extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<SearchItemBackend> sames = item.sames ?? [];
+
     return Scaffold(
       body: Container(
         color: Colors.blue[500],
@@ -104,21 +107,36 @@ class Build extends StatelessWidget {
                               ),
                               child: const Text("Download"),
                             ),
+                            const SizedBox(height: 30),
+                            Text(
+                              "Sames",
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                            GridView.count(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                              physics: const NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              children:
+                                  sames.map((e) => ImageCard(item: e)).toList(),
+                            ),
                             const SizedBox(height: 20),
                             Text(
                               "Tags",
                               style: Theme.of(context).textTheme.headline6,
                             ),
                             const SizedBox(height: 10),
-                            Wrap(
-                              spacing: 3,
-                              runSpacing: 3,
-                              alignment: WrapAlignment.start,
-                              children: item.tags
-                                  .map(
-                                    (tag) => DetailTag(title: tag),
-                                  )
-                                  .toList(),
+                            SizedBox(
+                              height: 60,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: item.tags
+                                    .map(
+                                      (tag) => DetailTag(title: tag),
+                                    )
+                                    .toList(),
+                              ),
                             )
                           ],
                         ),

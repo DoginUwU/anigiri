@@ -19,6 +19,9 @@ Future<MainBackend> getIndexApi() async {
 }
 
 Future<SearchBackend> searchByTagsApi(String tags, int page) async {
+  if (globals.currentWebsite.isEmpty) {
+    globals.currentWebsite = "gelbooru";
+  }
   final url = Uri.parse(Uri.encodeFull(
       baseUrl + "search?tags=$tags&site=${globals.currentWebsite}&page=$page"));
   final response = await http.get(url);

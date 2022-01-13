@@ -39,11 +39,12 @@ class SearchItemBackend {
 }
 
 class PostItemBackend {
-  final int id;
+  final String id;
   final String image;
   final String artist;
   final String copyright;
   final List<dynamic> tags;
+  final List<SearchItemBackend>? sames;
 
   PostItemBackend({
     required this.id,
@@ -51,6 +52,7 @@ class PostItemBackend {
     required this.artist,
     required this.copyright,
     required this.tags,
+    this.sames,
   });
 
   factory PostItemBackend.fromJson(final json) {
@@ -60,6 +62,9 @@ class PostItemBackend {
       artist: json['artist'],
       copyright: json['copyright'],
       tags: json['tags'],
+      sames: [
+        for (final item in json['sames']) SearchItemBackend.fromJson(item),
+      ],
     );
   }
 }
