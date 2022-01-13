@@ -14,7 +14,7 @@ Home             |  Detail image
 - Change default download location
 - Navigate and search with tags
 - Without any ads
-- Inifite scroll images
+- Infinite scroll images
 
 ## Installation
 
