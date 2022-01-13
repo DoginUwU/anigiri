@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:anigiri/services/download.dart';
 import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/services/utils.dart';
@@ -23,6 +25,12 @@ class _HomeState extends State<Home> {
     initializeDownloads();
     searchByTags(context, 'all', page, true)
         .then((a) => {setState(() => isLoading = false)});
+  }
+
+  @override
+  void dispose() {
+    IsolateNameServer.removePortNameMapping('downloader_send_port');
+    super.dispose();
   }
 
   @override

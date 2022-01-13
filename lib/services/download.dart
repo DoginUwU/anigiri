@@ -8,8 +8,12 @@ import 'package:anigiri/services/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+ReceivePort _port = ReceivePort();
+
 Future<void> initializeDownloads() async {
   await FlutterDownloader.initialize(debug: true);
+  IsolateNameServer.registerPortWithName(
+      _port.sendPort, 'downloader_send_port');
   FlutterDownloader.registerCallback(callback);
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
