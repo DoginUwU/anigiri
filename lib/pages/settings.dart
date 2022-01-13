@@ -7,6 +7,7 @@ import 'package:anigiri/widgets/dropdown_option.dart';
 import 'package:anigiri/widgets/go_back_app_bar.dart';
 import 'package:filesystem_picker/filesystem_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class Settings extends StatefulWidget {
 
 class _SettingsState extends State<Settings> {
   Future<void> changeDownloadPath(BuildContext context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     Directory rootDir = await findRoot();
 
     String? path = await FilesystemPicker.open(
@@ -30,6 +32,7 @@ class _SettingsState extends State<Settings> {
 
     if (path != null) {
       globals.downloadPath = path;
+      prefs.setString('downloadsPath', path);
       setState(() {});
     }
   }
