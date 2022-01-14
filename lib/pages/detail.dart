@@ -108,18 +108,29 @@ class Build extends StatelessWidget {
                               child: const Text("Download"),
                             ),
                             const SizedBox(height: 30),
-                            Text(
-                              "Sames",
-                              style: Theme.of(context).textTheme.headline6,
-                            ),
-                            GridView.count(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 10,
-                              crossAxisSpacing: 10,
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              children:
-                                  sames.map((e) => ImageCard(item: e)).toList(),
+                            Visibility(
+                              visible: sames.isNotEmpty,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Sames",
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                  GridView.count(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    shrinkWrap: true,
+                                    children: sames
+                                        .map((e) => ImageCard(item: e))
+                                        .toList(),
+                                  ),
+                                ],
+                              ),
                             ),
                             const SizedBox(height: 20),
                             Text(
