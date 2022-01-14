@@ -118,12 +118,14 @@ class Build extends StatelessWidget {
                                     style:
                                         Theme.of(context).textTheme.headline6,
                                   ),
+                                  const SizedBox(height: 10),
                                   GridView.count(
                                     crossAxisCount: 2,
                                     mainAxisSpacing: 10,
                                     crossAxisSpacing: 10,
                                     physics:
                                         const NeverScrollableScrollPhysics(),
+                                    padding: const EdgeInsets.all(0),
                                     shrinkWrap: true,
                                     children: sames
                                         .map((e) => ImageCard(item: e))

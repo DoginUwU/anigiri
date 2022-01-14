@@ -50,13 +50,12 @@ class _ImagesState extends State<Images> {
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 10),
           GridView.count(
             crossAxisCount: 2,
             mainAxisSpacing: 10,
             crossAxisSpacing: 10,
+            padding: const EdgeInsets.all(0),
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             children: widget.items
