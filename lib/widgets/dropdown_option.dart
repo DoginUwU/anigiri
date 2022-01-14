@@ -46,7 +46,7 @@ class _DropDownOptionState extends State<DropDownOption> {
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton<String>(
                     value: widget.selectedItem,
-                    onChanged: (value) {},
+                    onChanged: widget.onChange,
                     isDense: true,
                     items: widget.items.map((value) {
                       return DropdownMenuItem<String>(

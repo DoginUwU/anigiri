@@ -3,6 +3,8 @@ import 'package:anigiri/services/path.dart';
 import 'package:anigiri/widgets/dropdown_option.dart';
 import 'package:anigiri/widgets/go_back_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:restart_app/restart_app.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -12,6 +14,16 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  Future<void> changeWebsite(String? website) async {
+    if (website == null || website.isEmpty) return;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    globals.currentWebsite = website;
+    globals.restartRequired = true;
+    prefs.setString("currentWebsite", website);
+    Restart.restartApp();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,8 +71,8 @@ class _SettingsState extends State<Settings> {
                         DropDownOption(
                           title: 'Choose website',
                           items: globals.websites,
-                          selectedItem: globals.websites[0],
-                          onChange: (p0) {},
+                          selectedItem: globals.currentWebsite,
+                          onChange: changeWebsite,
                         ),
                         const SizedBox(
                           height: 30,

@@ -6,6 +6,7 @@ import 'package:anigiri/pages/search.dart';
 import 'package:anigiri/pages/settings.dart';
 import 'package:anigiri/services/backend.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/home.dart';
 
 void main() {
@@ -17,10 +18,11 @@ class Anigiri extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getIndexApi().then((a) {
+    getIndexApi().then((a) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       final sites = a.availableSites.cast<String>();
       globals.websites = sites;
-      globals.currentWebsite = sites[0];
+      globals.currentWebsite = prefs.getString("currentWebsite") ?? sites[0];
       rebuildAllChildren(context);
     });
 
