@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
    <application
-        android:label="anigiri"
+        android:label="Anigiri"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">  
 
