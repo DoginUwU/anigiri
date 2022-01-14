@@ -11,34 +11,36 @@ class DefaultAppBar extends StatefulWidget {
 class _DefaultAppBarState extends State<DefaultAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(18),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            globals.currentWebsite,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 25,
-              fontWeight: FontWeight.w300,
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              globals.currentWebsite,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontWeight: FontWeight.w300,
+              ),
             ),
-          ),
-          TextButton(
-            onPressed: () {
-              String? currentRoute = ModalRoute.of(context)?.settings.name;
-              if (currentRoute != "/settings") {
-                Navigator.pushNamed(context, '/settings');
-              } else {
-                Navigator.pushNamed(context, '/');
-              }
-            },
-            child: const Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-          )
-        ],
+            TextButton(
+              onPressed: () {
+                String? currentRoute = ModalRoute.of(context)?.settings.name;
+                if (currentRoute != "/settings") {
+                  Navigator.pushNamed(context, '/settings');
+                } else {
+                  Navigator.pushNamed(context, '/');
+                }
+              },
+              child: const Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

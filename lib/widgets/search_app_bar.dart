@@ -12,18 +12,20 @@ class SearchAppBar extends StatefulWidget {
 class _SearchAppBarState extends State<SearchAppBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(18),
-      child: Align(
-        alignment: Alignment.center,
-        child: TextField(
-          obscureText: false,
-          decoration: const InputDecoration(
-            fillColor: Colors.white,
-            filled: true,
-            labelText: 'Search...',
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.all(18),
+        child: Align(
+          alignment: Alignment.center,
+          child: TextField(
+            obscureText: false,
+            decoration: const InputDecoration(
+              fillColor: Colors.white,
+              filled: true,
+              labelText: 'Search...',
+            ),
+            onSubmitted: widget.onSubmitted,
           ),
-          onSubmitted: widget.onSubmitted,
         ),
       ),
     );

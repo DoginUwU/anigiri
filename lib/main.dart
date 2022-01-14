@@ -1,6 +1,9 @@
 import 'package:anigiri/pages/detail.dart';
+import 'package:anigiri/pages/splash.dart';
+import 'package:anigiri/pages/terms.dart';
 import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/services/utils.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:anigiri/pages/search.dart';
 import 'package:anigiri/pages/settings.dart';
@@ -18,6 +21,10 @@ class Anigiri extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ));
+
     getIndexApi().then((a) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       final sites = a.availableSites.cast<String>();
@@ -28,12 +35,14 @@ class Anigiri extends StatelessWidget {
 
     return MaterialApp(
       title: 'Anigiri',
-      initialRoute: '/',
+      initialRoute: '/splash',
       routes: {
-        '/': (context) => const SafeArea(child: Home()),
-        '/settings': (context) => const SafeArea(child: Settings()),
-        '/search': (context) => const SafeArea(child: Search()),
-        '/detail': (context) => const SafeArea(child: Detail()),
+        '/': (context) => const Home(),
+        '/settings': (context) => const Settings(),
+        '/search': (context) => const Search(),
+        '/detail': (context) => const Detail(),
+        '/splash': (context) => const Splash(),
+        '/terms': (context) => const Terms(),
       },
       builder: EasyLoading.init(),
     );

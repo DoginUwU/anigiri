@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:anigiri/services/download.dart';
 import 'package:anigiri/services/globals.dart' as globals;
 import 'package:anigiri/services/utils.dart';
@@ -7,7 +6,6 @@ import 'package:anigiri/widgets/default_navigation_bar.dart';
 import 'package:anigiri/widgets/images.dart';
 import 'package:flutter/material.dart';
 import 'package:anigiri/widgets/default_app_bar.dart';
-import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,13 +21,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-
-    AppBar(
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.blue[500],
-      ),
-    );
-
     initializeDownloads();
     searchByTags(context, 'all', page, true)
         .then((a) => {setState(() => isLoading = false)});
@@ -37,8 +28,6 @@ class _HomeState extends State<Home> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
     IsolateNameServer.removePortNameMapping('downloader_send_port');
     super.dispose();
   }
