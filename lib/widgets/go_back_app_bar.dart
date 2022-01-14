@@ -17,7 +17,7 @@ class _GoBackAppBarState extends State<GoBackAppBar> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
