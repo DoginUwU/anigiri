@@ -1,5 +1,4 @@
-
-# Anigiri
+![Anigiri](https://user-images.githubusercontent.com/59850361/149448793-6f08a7b2-c372-4b42-8734-a15232b201a6.png)
 
 A simple booru website viewer for mobile. You can quickly browse between booru sites, and download images according to your wishes.
 
